@@ -16,6 +16,7 @@ for more information: http://getkirby.com/license
 */
 
 c::set('license', 'put your license key here');
+c::set('imagekit.license', 'IMGKT1-00000000000000000000000000000000');
 
 /*
 
@@ -29,6 +30,22 @@ of the system, please check out http://getkirby.com/docs/advanced/options
 
 */
 
+c::set('home', 'projects');
+c::set('debug', true);
+
+//Typo
+c::set('typography', true);
+c::set('typography.ordinal.suffix', false);
+c::set('typography.fractions', false);
+c::set('typography.dashes.spacing', false);
+c::set('typography.hyphenation', true);
+c::set('typography.hyphenation.language', 'fr');
+c::set('typography.hyphenation.minlength', 5);
+c::set('typography.hyphenation.headings', false);
+c::set('typography.hyphenation.allcaps', false);
+c::set('typography.hyphenation.titlecase', false);
+
+//Options
 c::set('oembed.lazyvideo', true);
 c::set('sitemap.exclude', array('error'));
 c::set('sitemap.important', array('contact'));

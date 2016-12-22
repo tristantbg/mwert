@@ -59,6 +59,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="<?= url('assets/js/vendor/jquery.min.js') ?>">\x3C/script>')</script>
 
+	<script>
+		function loadJS(u){var r=document.getElementsByTagName("script")[0],s=document.createElement("script");s.src=u;r.parentNode.insertBefore(s,r);}
+
+		if(!window.HTMLPictureElement || !('sizes' in document.createElement('img'))){
+		    loadJS("/assets/js/vendor/ls.respimg.min.js");
+		}
+	</script>
+
 	<?php if(!$site->customcss()->empty()): ?>
 		<style type="text/css">
 			<?php echo $site->customcss()->html() ?>
@@ -69,3 +77,57 @@
 <body>
 
 <div class="loader"></div>
+
+<header class="reduced">
+	<a href="<?= $site->url() ?>" data-target="index">
+		<span id="site-title">
+			<div>
+			<img src="<?= url('assets/images/manon.svg') ?>" onerror="this.src='<?= url('assets/images/manon.png') ?>'; this.onerror=null;" alt="Manon" width="100%">
+			</div>
+			<div>
+			<img src="<?= url('assets/images/wertenbroek.svg') ?>" onerror="this.src='<?= url('assets/images/wertenbroek.png') ?>'; this.onerror=null;" alt="Wertenbroek" width="100%">
+			</div>
+		</span>
+	</a>
+</header>
+
+<?php
+
+$exhibitionsPage = $pages->find('exhibitions');
+$exhibitions = $exhibitionsPage->children()->visible();
+$projectsPage = $pages->find('projects');
+$projects = $projectsPage->children()->visible();
+$aboutPage = $pages->find('about');
+
+?>
+
+<?php if($exhibitions->count() > 0): ?>
+<div id="exhibitions-menu" class="menu-item">
+	<span class="menu-toggle"><?= $exhibitionsPage->title()->html() ?></span>
+	<ul class="submenu">
+	<?php foreach ($exhibitions as $key => $p): ?>
+		<li><a href="<?= $p->url() ?>" data-title="<?= $p->title()->html() ?>" data-target="page"><?= $p->title()->html() ?></a></li>
+	<?php endforeach ?>
+	</ul>
+</div>
+<?php endif ?>
+
+<?php if($projects->count() > 0): ?>
+<div id="projects-menu" class="menu-item">
+	<span class="menu-toggle"><?= $projectsPage->title()->html() ?></span>
+	<ul class="submenu">
+	<?php foreach ($projects as $key => $p): ?>
+		<li><a href="<?= $p->url() ?>" data-title="<?= $p->title()->html() ?>" data-target="page"><?= $p->title()->html() ?></a></li>
+	<?php endforeach ?>
+	</ul>
+</div>
+<?php endif ?>
+
+<div id="about-menu" class="menu-item">
+	<a href="<?= $aboutPage->url() ?>" data-title="<?= $aboutPage->title()->html() ?>" data-target="page">
+	<?= $aboutPage->title()->html() ?>
+	</a>
+</div>
+
+<div id="container">
+<div class="inner <?php e($page->isHomepage(), "home", "page") ?>" data-id="<?= $page->hash() ?>">

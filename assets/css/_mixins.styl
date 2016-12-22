@@ -72,6 +72,13 @@ dead-center(position)
 	left: 50%
 	transform: translate(-50%,-50%)
 
+backface()
+	transform(translateZ(0))
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+
 flexbox()
 	display -webkit-box
 	display -moz-box
@@ -86,7 +93,7 @@ vendor(prop, args)
 	-o-{prop} args
 	{prop} args
 	
-transition(what = all,time = 300ms,easing = ease)
+transition(what = all,time = 300ms,easing = cubic-bezier(.80,0,.20,1))
 	vendor(transition,what time easing)
 
 filter(args)
