@@ -87,6 +87,7 @@
 			<div>
 			<img src="<?= url('assets/images/wertenbroek.svg') ?>" onerror="this.src='<?= url('assets/images/wertenbroek.png') ?>'; this.onerror=null;" alt="Wertenbroek" width="100%">
 			</div>
+			<img class="mobile-logo" src="<?= url('assets/images/mm.svg') ?>" onerror="this.src='<?= url('assets/images/mm.png') ?>'; this.onerror=null;" alt="Manon Wertenbroek" width="100%">
 		</span>
 	</a>
 </header>
@@ -101,17 +102,6 @@ $aboutPage = $pages->find('about');
 
 ?>
 
-<?php if($exhibitions->count() > 0): ?>
-<div id="exhibitions-menu" class="menu-item">
-	<span class="menu-toggle"><?= $exhibitionsPage->title()->html() ?></span>
-	<ul class="submenu">
-	<?php foreach ($exhibitions as $key => $p): ?>
-		<li><a href="<?= $p->url() ?>" data-title="<?= $p->title()->html() ?>" data-target="page"><?= $p->title()->html() ?></a></li>
-	<?php endforeach ?>
-	</ul>
-</div>
-<?php endif ?>
-
 <?php if($projects->count() > 0): ?>
 <div id="projects-menu" class="menu-item">
 	<span class="menu-toggle"><?= $projectsPage->title()->html() ?></span>
@@ -120,6 +110,16 @@ $aboutPage = $pages->find('about');
 		<li><a href="<?= $p->url() ?>" data-title="<?= $p->title()->html() ?>" data-target="page"><?= $p->title()->html() ?></a></li>
 	<?php endforeach ?>
 	</ul>
+	<?php if($exhibitions->count() > 0): ?>
+	<div id="exhibitions-menu" class="menu-item">
+		<span class="menu-toggle"><?= $exhibitionsPage->title()->html() ?></span>
+		<ul class="submenu">
+		<?php foreach ($exhibitions as $key => $p): ?>
+			<li><a href="<?= $p->url() ?>" data-title="<?= $p->title()->html() ?>" data-target="page"><?= $p->title()->html() ?></a></li>
+		<?php endforeach ?>
+		</ul>
+	</div>
+	<?php endif ?>
 </div>
 <?php endif ?>
 
