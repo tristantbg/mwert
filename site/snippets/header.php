@@ -38,11 +38,14 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<?= html($page->url()) ?>" />
 	<?php if($page->content()->name() == "project"): ?>
-		<?php if (!$page->featured()->empty()): ?>
-			<meta property="og:image" content="<?= resizeOnDemand($page->image($page->featured()), 1200) ?>"/>
+		<?php if ($page->featuredimage()->isNotEmpty()): ?>
+			<meta property="og:image" content="<?= resizeOnDemand($page->image($page->featuredimage()), 1200) ?>"/>
+		<?php endif ?>
+		<?php if ($page->secondaryimage()->isNotEmpty()): ?>
+			<meta property="og:image" content="<?= resizeOnDemand($page->image($page->secondaryimage()), 1200) ?>"/>
 		<?php endif ?>
 	<?php else: ?>
-		<?php if(!$site->ogimage()->empty()): ?>
+		<?php if($site->ogimage()->isNotEmpty()): ?>
 			<meta property="og:image" content="<?= $site->ogimage()->toFile()->width(1200)->url() ?>"/>
 		<?php endif ?>
 	<?php endif ?>
@@ -52,7 +55,7 @@
 	<link rel="icon" href="<?php //url('assets/images/favicon.ico') ?>" type="image/x-icon"> -->
 
 	<?php 
-	echo css('assets/css/build/build.min.css');
+	echo css('assets/css/build/build.min.css?=v2.0');
 	echo js('assets/js/vendor/modernizr.min.js');
 	?>
 	
@@ -74,11 +77,23 @@
 	<?php endif ?>
 
 </head>
-<body>
+<body<?php e($page->content()->name() == 'about', ' class="about"') ?>>
 
 <div class="loader"></div>
 
-<header class="reduced">
+<?php $introback = $site->introback() ?>
+<?php $introfront = $site->introfront() ?>
+<?php if($introback->isNotEmpty()): ?>
+<div id="intro">
+	<div class="back<? e($site->distort()->bool(), ' distort') ?><? e($site->colorsmotion()->bool(), ' hue-minus') ?>" style="background-image: url('<?= $introback->toFile()->url() ?>');">
+	</div>
+	<?php if($introfront->isNotEmpty()): ?>
+	<div class="front<?php echo ' '.$site->effect(); ?><? e($site->imagemotion()->bool(), ' move') ?><? e($site->colorsmotion()->bool(), ' hue-plus') ?>" style="background-image: url('<?= $introfront->toFile()->url() ?>');">></div>
+	<?php endif ?>
+</div>
+<?php endif ?>
+
+<header<?php e($introback->isEmpty(), ' class="reduced"') ?>>
 	<a href="<?= $site->url() ?>" data-target="index">
 		<span id="site-title">
 			<div>
@@ -87,7 +102,7 @@
 			<div>
 			<img src="<?= url('assets/images/wertenbroek.svg') ?>" onerror="this.src='<?= url('assets/images/wertenbroek.png') ?>'; this.onerror=null;" alt="Wertenbroek" width="100%">
 			</div>
-			<img class="mobile-logo" src="<?= url('assets/images/mm.svg') ?>" onerror="this.src='<?= url('assets/images/mm.png') ?>'; this.onerror=null;" alt="Manon Wertenbroek" width="100%">
+			<img class="logo" src="<?= url('assets/images/mm.svg') ?>" onerror="this.src='<?= url('assets/images/mm.png') ?>'; this.onerror=null;" alt="Manon Wertenbroek" width="100%">
 		</span>
 	</a>
 </header>
@@ -96,7 +111,7 @@
 
 $exhibitionsPage = $pages->find('exhibitions');
 $exhibitions = $exhibitionsPage->children()->visible();
-$projectsPage = $pages->find('projects');
+$projectsPage = $pages->find('work');
 $projects = $projectsPage->children()->visible();
 $aboutPage = $pages->find('about');
 
@@ -124,7 +139,7 @@ $aboutPage = $pages->find('about');
 <?php endif ?>
 
 <div id="about-menu" class="menu-item">
-	<a href="<?= $aboutPage->url() ?>" data-title="<?= $aboutPage->title()->html() ?>" data-target="page">
+	<a href="<?= $aboutPage->url() ?>" data-title="<?= $aboutPage->title()->html() ?>" data-target="about">
 	<?= $aboutPage->title()->html() ?>
 	</a>
 </div>

@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         concat: {
             plugins: {
-                src: ['site/plugins/oembed/assets/js/oembed.js', 'lib/lazysizes/lazysizes.min.js', 'lib/lazysizes/plugins/optimumx/ls.optimumx.min.js', 'lib/lazysizes/plugins/bgset/ls.bgset.min.js', 'lib/viewport-units-buggyfill/viewport-units-buggyfill.js', 'lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
+                src: ['site/plugins/oembed/assets/js/oembed.js', 'lib/lazysizes/lazysizes.min.js', 'lib/lazysizes/plugins/optimumx/ls.optimumx.min.js', 'lib/lazysizes/plugins/bgset/ls.bgset.min.js', 'lib/viewport-units-buggyfill/viewport-units-buggyfill.js', 'node_modules/scroll-restoration-polyfill/dist/scroll-restoration-polyfill.browser.js', 'lib/history.js/scripts/bundled/html4+html5/jquery.history.js'],
                 dest: 'assets/js/plugins.concat.js'
             },
             js: {

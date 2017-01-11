@@ -8,14 +8,19 @@
 	  <?php snippet('sections/' . $section->_fieldset(), array('data' => $section)) ?>
 	<?php endforeach ?>
 
+	<?php if($page->text()->isNotEmpty()): ?>
 	<section id="project-description">
 		<div class="project-title">
 			<h1><?= $page->title()->html() ?></h1>
+			<?php if($page->subtitle()->isNotEmpty()): ?>
+			<h1><?= $page->subtitle()->html() ?></h1>
+			<?php endif ?>
 		</div>
 		<div class="project-text">
 			<?= $page->text()->kt() ?>
 		</div>
 	</section>
+	<?php endif ?>
 
 </div>
 

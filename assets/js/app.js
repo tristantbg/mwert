@@ -13,15 +13,26 @@ $(function() {
             $(document).ready(function($) {
                 $body = $('body');
                 $container = $('#container');
+                $header = $('header');
                 History.Adapter.bind(window, 'statechange', function() {
                     var State = History.getState();
                     console.log(State);
                     content = State.data;
-                    if (content.type == 'page') {
-                        app.loadContent(State.url, $container);
-                    } else {
-                        app.loadContent(State.url, $container);
-                    }
+                    app.loadContent(State.url, $container);
+                });
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                }
+                $body.on('click', '#back', function(e) {
+                    History.go(-1);
+                });
+                $('#intro').click(function(event) {
+                    $(this).addClass('hidden');
+                    $header.addClass('reduction');
+                    setTimeout(function() {
+                        $header.removeClass('reduction').addClass('reduced');
+                        $(this).remove();
+                    }, 1500);
                 });
                 $('body').on('click', '[data-target]', function(e) {
                     $el = $(this);
@@ -31,11 +42,15 @@ $(function() {
                         History.pushState({
                             type: 'page'
                         }, $el.data('title') + " | " + $sitetitle, $el.attr('href'));
+                    } else if ($el.data('target') == "about") {
+                        History.pushState({
+                            type: 'about'
+                        }, $el.data('title') + " | " + $sitetitle, $el.attr('href'));
                     } else if ($el.data('target') == "index") {
                         e.preventDefault();
                         app.goIndex();
                     }
-                    if (Modernizr.localstorage) {
+                    if (Modernizr.localstorage && $('#container .inner').hasClass('home')) {
                         localStorage.setItem('scrollTop-' + $('#container .inner.home').data('id'), $body.scrollTop());
                     }
                 });
@@ -57,7 +72,11 @@ $(function() {
                 });
                 app.navScroll();
                 window.viewportUnitsBuggyfill.init();
+                $(document).on('lazybeforeunveil', function(e) {
+                        $(e.target).parents('.project').addClass('lazyloaded');
+                });
                 $(window).load(function() {
+                    app.sizeSet();
                     $(".loader").fadeOut("fast");
                 });
             });
@@ -71,6 +90,17 @@ $(function() {
                     isMobile = false;
                     //location.reload();
                 }
+            } else {
+                $("#projects-container .project:not(:first-child)").each(function(index, el) {
+                    var elem = $(this);
+                    var prevH = elem.prev().outerHeight();
+                    var elemH = $(this).outerHeight();
+                    if (elemH > prevH) {
+                        $(this).css('marginTop', -prevH / 4);
+                    } else {
+                        $(this).css('marginTop', -elemH / 3);
+                    }
+                });
             }
         },
         goIndex: function() {
@@ -83,7 +113,7 @@ $(function() {
             var footer = $('footer');
 
             function searchElems() {
-                if (footer.length > 0) {
+                if (footer.length > 0 && desc.length > 0) {
                     var window_bottom = $(document).scrollTop() + height - 20;
                     if (window_bottom >= desc.position().top) {
                         footer.addClass('next-project');
@@ -96,6 +126,11 @@ $(function() {
         },
         loadContent: function(url, target) {
             $body.addClass('leaving');
+            if (content.type == 'about') {
+                $body.addClass('about');
+            } else {
+                $body.removeClass('about');
+            }
             $('#container .inner').hasClass('home') ? delay = 1000 : delay = 300;
             setTimeout(function() {
                 $(target).load(url + ' #container .inner', function(response) {
@@ -109,12 +144,11 @@ $(function() {
                             } else {
                                 $body.scrollTop(0);
                             }
-                        } else {
-                            $body.scrollTop(0);
                         }
                         $body.removeClass('leaving');
                         app.navScroll();
-                    }, 500);
+                        app.sizeSet();
+                    }, 100);
                 });
             }, delay);
         },

@@ -29,7 +29,7 @@ body,html
 	background $primary
 
 html
-	font-size 62.5%
+	font-size 60%
 	+below($md)
 		font-size 40%
 
@@ -78,7 +78,7 @@ img
 	display block
 
 img.lazyimg
-	transition(opacity)
+	transition(opacity, 400ms, ease)
 	opacity 0
 
 img.lazyimg.lazyloaded
@@ -87,6 +87,8 @@ img.lazyimg.lazyloaded
 .diff, .menu-item
 	color $primary
 	mix-blend-mode difference
+
+@import '_intro.styl'
 
 .loader
 	hideselect()
@@ -97,7 +99,7 @@ img.lazyimg.lazyloaded
 	left 0
 	background $primary
 	background-size 15px
-	z-index 10000
+	z-index 11000
 
 header
 	hideselect()
@@ -106,7 +108,6 @@ header
 	top ($padding*3)
 	width 100%
 	text-align center
-	mix-blend-mode difference
 	pointer-events none
 	+below($md)
 		top ($padding*2)
@@ -114,6 +115,8 @@ header
 		display inline-block
 		pointer-events auto
 	#site-title
+		transition(all, 1s, ease)
+		transform-origin 49.5% 47%
 		margin-top 0.2rem
 	div
 		transition(all, 1.5s, ease)
@@ -125,24 +128,31 @@ header
 		img
 			height 100%
 			width auto
-	img.mobile-logo
-		width 10rem
-		+above($md + 1)
-			display none
+	img.logo
+		height 3.5rem
+		display none
+		+below($md)
+			display inline-block
+			width 10rem
 	div:first-child
 		width 14rem
 	div:nth-child(2)
 		width 25rem
 
-header.reduced
+header.reduction
 	div
 		width 3.4rem
 	div:nth-child(2)
 		margin-left -.6rem
+
+header.reduced
+	mix-blend-mode difference
+	div
+		display none
+	img.logo
+		display inline-block
 	#site-title:hover
 		+above($md + 1)
-			transition(all, 1s, ease)
-			transform-origin 50% 47%
 			transform(rotate(180deg))
 
 .menu-item
@@ -151,6 +161,8 @@ header.reduced
 	z-index 1000
 	span.menu-toggle
 		cursor pointer
+		display block
+		max-height 1em
 	ul.submenu
 		margin-left .5em
 		li
@@ -159,7 +171,7 @@ header.reduced
 			overflow hidden
 	ul.submenu.open
 		li
-			height 1em
+			height 1.1em
 
 // #exhibitions-menu
 // 	top ($padding*2)
@@ -180,6 +192,9 @@ header.reduced
 #about-menu
 	top ($padding*2)
 	right $padding
+	transition(height, 500ms)
+	height 1.1em
+	overflow hidden
 
 #container
 	display inline-block
@@ -191,17 +206,19 @@ header.reduced
 
 #projects-container
 	hideselect()
-	margin-bottom 20vh
+	padding-bottom 10vh
 	span(1)
 	overflow hidden
 	+below($md)
-		margin 20rem 0 0
+		padding 20rem 0 0
 	.project
 		cf()
-		transition(all, 1000ms, cubic-bezier(.60,0,.40,1))
+		transition(all, 1s, cubic-bezier(.60,0,.40,1))
 		backface()
 		.image-overflow
+			transition(opacity, 400ms, ease)
 			overflow hidden
+			opacity 0
 	.project:nth-child(n+2)
 		margin-top -15vw
 		+below($md)
@@ -216,6 +233,7 @@ header.reduced
 		.secondary.image
 			bottom 0
 			right ($padding/2)
+			text-align right
 	.project:nth-child(even)
 		margin-left 50%
 		padding-left ($padding / 2)
@@ -229,6 +247,9 @@ header.reduced
 		.secondary.image
 			top 0
 			left ($padding/2)
+	.project.lazyloaded
+		.image-overflow
+			opacity 1
 	.project
 		width 50%
 		position relative
@@ -244,6 +265,7 @@ header.reduced
 			justify-content space-between
 			color $darkgrey
 			font-size 1.7rem
+			text-align left
 			+below($md)
 				width 100%
 				position initial
@@ -251,7 +273,7 @@ header.reduced
 				font-size 2.5rem
 				float left
 		.featured.image
-			transition(all, 800ms)
+			transition(transform, 1.8s)
 			transition-delay(0s)
 			position relative
 			z-index 1
@@ -271,6 +293,7 @@ header.reduced
 			height 100%
 			overflow hidden
 			img.lazyimg
+				display inline-block
 				width auto
 				height 100%
 		.featured.image.lazyloaded + .secondary.image
@@ -292,7 +315,9 @@ header.reduced
 
 .inner.page
 	span(1)
+	text-align center
 	#sections
+		span(1)
 		transition(opacity, 300ms, ease)
 		opacity 1
 
@@ -308,19 +333,43 @@ $margin-desktop = 10vw
 $margin-mobile = 30vw
 
 .page-content
-	span(14/24, offset: 5/24)
-	margin-top 10rem
+	width 66.66666666666666%
+	//margin-top 15rem
 	min-height 100vh
+	max-width 1200px
+	display inline-block
+	text-align left
+	float none
 	+below($md)
 		stack()
 		margin-top 20rem
 	h1,h2
 		margin-bottom 1em
+	em
+		font-size 1.2rem
+		letter-spacing 100%
+		top -.5em
+		+below($md)
+			font-size 2.3rem
+	.year
+		p
+			margin-left 2.5rem
+			margin-bottom 0
+			+below($md)
+				margin-left 5rem
+		p:first-child
+			margin-left 0
+			font-size 1.2rem
+			letter-spacing 100%
+			+below($md)
+				font-size 2.3rem
 	section
 		span(1)
 		margin-bottom $margin-desktop
 		+below($md)
 			margin-bottom $margin-mobile
+		.col-1-4
+			width 25%
 		.col-2-4
 			width 50%
 		.col-3-4
@@ -329,14 +378,13 @@ $margin-mobile = 30vw
 			width 100%
 		.col
 			display inline-block
-			padding 0 $padding
+			+above($md + 1)
+				padding 0 $padding
 			+below($md)
 				width 100%
-				padding 0
 		.content.image
-			padding 0 $padding
-			+below($md)
-				padding 0
+			+above($md + 1)
+				padding 0 $padding
 		.image-caption
 			width 100%
 			margin-top $padding
@@ -344,6 +392,7 @@ $margin-mobile = 30vw
 			justify-content space-between
 			font-size 1.2rem
 			letter-spacing 100%
+			text-align left
 			+below($md)
 				font-size 2.3rem
 	section:first-child
@@ -352,6 +401,16 @@ $margin-mobile = 30vw
 			margin-bottom $margin-mobile
 	section.s-image
 		text-align center
+	section.s-image.left
+		text-align left
+		.col
+			+above($md + 1)
+				padding 0 $padding 0 0
+	section.s-image.right
+		text-align right
+		.col
+			+above($md + 1)
+				padding 0 0 0 $padding
 	section.s-twoimages
 		.content.image
 			span(1/2)
@@ -392,8 +451,52 @@ $margin-mobile = 30vw
 			col(3/10)
 			+below($md)
 				stack()
+			h1
+				line-height 110%
+			h1:not(:last-child)
+				margin-bottom 0
 		.project-text
 			col(7/10, cycle:2)
+			+below($md)
+				stack()
+
+.page-content.about
+	width 66.66666666666666%
+	min-height 100vh
+	max-width 1200px
+	//margin-top 15rem
+	+below($md)
+		stack()
+	section
+		margin-bottom ($margin-desktop/2)
+		+below($md)
+			margin-bottom ($margin-mobile/2)
+	#about-text
+		col(3.2/4)
+		font-size 2rem
+		+below($md)
+			stack()
+			font-size 3rem
+			margin-bottom ($margin-mobile/2)
+	#about-contact
+		col(0.8/4, gutter: 5, cycle: 2)	
+		+below($md)
+			stack()
+			flexbox()
+		p:not(:first-child)
+			+below($md)
+				margin-left 3em
+	section.about-section
+		.section-title
+			span(1/2)
+			+below($md)
+				stack()
+				font-size 3rem
+				margin-bottom 1em
+		.section-text
+			span(1/2)
+			+above($md + 1)
+				margin-top .2em
 			+below($md)
 				stack()
 
@@ -402,16 +505,22 @@ footer
 		cursor default
 	#page-title, #next-project
 		transition(all, 500ms)
-		height 1em
+		height 1.1em
 		overflow hidden
 	#next-project
 		height 0
+	#back
+		cursor pointer
 
 footer.next-project
 	#page-title
 		height 0
 	#next-project
-		height 1em
+		height 1.1em
+
+body.about
+	#about-menu
+		height 0
 
 body.leaving
 	#projects-container
@@ -423,7 +532,7 @@ body.leaving
 		.project:nth-child(even)
 			transform(translate3d(110%,0,0))
 	.inner.page
-		#sections
+		#sections, .section
 			opacity 0
 		footer
 			#page-title, #next-project

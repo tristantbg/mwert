@@ -15,3 +15,24 @@ fields:
     label: Featured image
     type: image
     width: 1/2
+    required: true
+  text:
+    label: Description
+    type: textarea
+  contact:
+    label: Contact
+    type: textarea
+  sections:
+    label: Sections
+    type: builder
+    fieldsets:
+      aboutsection:
+        label: About Section
+        snippet: sections/aboutsection
+        fields:
+          sectiontitle:
+            label: Section title
+            type: text
+          textcontent:
+            label: Text
+            type: textarea

@@ -8,6 +8,8 @@ fields:
   title:
     label: Title
     type:  text
+    validate:
+      maxLength: 45
     width: 1/2
   date:
     label: Year
@@ -30,6 +32,9 @@ fields:
     type: toggle
     width: 1/4
     default: no
+  subtitle:
+    label: Description Subtitle
+    type:  text
   text:
     label: Description
     type: textarea
@@ -44,12 +49,14 @@ fields:
                <tr>
                <td style="width:20%">Image</td>
                <td>Width</td>
+               <td>Position</td>
                <td>Caption Left</td>
                <td>Caption Right</td>
                </tr>
                <tr>
                <td style="width:20%"><img src="{{_thumb}}" width="80px"><br>{{content}}</td>
                <td>{{width}}</td>
+               <td>{{position}}</td>
                <td>{{captionleft}}</td>
                <td>{{captionright}}</td>
                </tr>
@@ -59,11 +66,11 @@ fields:
             label: Image
             type: image
             required: true
-            width: 1/2
+            width: 1/3
           width:
             label: Width
             type: select
-            width: 1/2
+            width: 1/3
             required: true
             options:
               col-1-4 : 1/4
@@ -71,6 +78,16 @@ fields:
               col-3-4 : 3/4
               col-4-4 : 4/4
             default: col-2-4
+          position:
+            label: Position
+            type: select
+            width: 1/3
+            required: true
+            options:
+              left : Left
+              center : Center
+              right : Right
+            default: center
           captionleft:
             label: Caption Left
             type: text

@@ -12,5 +12,8 @@
     "grunt-php": "*",
     "jeet": "*",
     "rupture": "*"
+  },
+  "dependencies": {
+    "scroll-restoration-polyfill": "^0.6.1"
   }
 }

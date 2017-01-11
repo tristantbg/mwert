@@ -1,4 +1,4 @@
-<section class="s-image">
+<section class="s-image <?= $data->position() ?>">
   <div class="content col <?= $data->width() ?>">
   	<?php $image = $data->content()->toFile() ?>
 		<?php 
@@ -27,6 +27,6 @@
 			<?php endif ?>
 		</div>
 		<?php endif ?>
-		
+
   </div>
 </section>

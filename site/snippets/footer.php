@@ -18,7 +18,7 @@
 		lazySizesConfig.loadMode = 3;
 	</script>
 	<?php
-	echo js(array('assets/js/build/plugins.js', 'assets/js/build/app.min.js'));
+	echo js(array('assets/js/build/plugins.js?=v2.0', 'assets/js/build/app.min.js?=v2.0'));
 	?>
 
 </body>
