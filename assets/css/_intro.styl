@@ -36,10 +36,12 @@
 
 @keyframes hide-container {
   from {
-    transform(translate3d(0,0%,0))
+    width 100%
+    left 0
   }
   to {
-    transform(translate3d(0,-100%,0))
+    width 0
+    left 50%
   }
 }
 
@@ -115,4 +117,9 @@
 		animation-duration(1.8s)
 		animation-timing-function(cubic-bezier(.60,0,.40,1))
 		animation-fill-mode(forwards)
+		.back
+			animation-name(move)
+			animation-duration(1.8s)
+			animation-timing-function(cubic-bezier(.60,0,.40,1))
+			animation-fill-mode(forwards)
 	

@@ -1,7 +1,16 @@
 <section class="s-twoimages">
 
   <div class="content image">
-  	<?php $image = $data->content1()->toFile() ?>
+  	<?php $image = $data->content1()->toFile(); 
+  			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
+  			if ($data->captionleft1()->isNotEmpty()) {
+  				$alt = $data->captionleft1()->html();
+  				if ($data->captionright1()->isNotEmpty()) {
+  					$alt .= ', '.$data->captionright1()->html();
+  				}
+  				$alt .= ' — © '.$site->title()->html();
+  			}
+  	?>
 		<?php 
 			$srcset = '';
 			for ($i = 500; $i <= 2500; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
@@ -13,11 +22,11 @@
 		data-sizes="auto" 
 		data-optimumx="1.5" 
 		class="lazyimg lazyload" 
-		alt="<?= $page->title()->html().' — © '.$site->title()->html() ?>" 
+		alt="<?= $alt ?>" 
 		width="100%" height="auto">
 
 		<noscript>
-			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $page->title()->html().' — © '.$site->title()->html() ?>" width="100%" height="auto" />
+			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $alt ?>" width="100%" height="auto" />
 		</noscript>
 
 		<?php if($data->captionleft1()->isNotEmpty()): ?>
@@ -32,7 +41,16 @@
   </div>
 
   <div class="content image">
-  	<?php $image = $data->content2()->toFile() ?>
+  	<?php $image = $data->content2()->toFile(); 
+  			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
+  			if ($data->captionleft2()->isNotEmpty()) {
+  				$alt = $data->captionleft2()->html();
+  				if ($data->captionright2()->isNotEmpty()) {
+  					$alt .= ', '.$data->captionright2()->html();
+  				}
+  				$alt .= ' — © '.$site->title()->html();
+  			}
+  	?>
 		<?php 
 			$srcset = '';
 			for ($i = 500; $i <= 2500; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
@@ -44,11 +62,11 @@
 		data-sizes="auto" 
 		data-optimumx="1.5" 
 		class="lazyimg lazyload" 
-		alt="<?= $page->title()->html().' — © '.$site->title()->html() ?>" 
+		alt="<?= $alt ?>" 
 		width="100%" height="auto">
 
 		<noscript>
-			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $page->title()->html().' — © '.$site->title()->html() ?>" width="100%" height="auto" />
+			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $alt ?>" width="100%" height="auto" />
 		</noscript>
 
 		<?php if($data->captionleft2()->isNotEmpty()): ?>

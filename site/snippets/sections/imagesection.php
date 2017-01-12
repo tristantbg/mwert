@@ -1,6 +1,15 @@
 <section class="s-image <?= $data->position() ?>">
   <div class="content col <?= $data->width() ?>">
-  	<?php $image = $data->content()->toFile() ?>
+  	<?php $image = $data->content()->toFile(); 
+  			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
+  			if ($data->captionleft()->isNotEmpty()) {
+  				$alt = $data->captionleft()->html();
+  				if ($data->captionright()->isNotEmpty()) {
+  					$alt .= ', '.$data->captionright()->html();
+  				}
+  				$alt .= ' — © '.$site->title()->html();
+  			}
+  	?>
 		<?php 
 			$srcset = '';
 			for ($i = 500; $i <= 2500; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
@@ -12,11 +21,11 @@
 		data-sizes="auto" 
 		data-optimumx="1.5" 
 		class="lazyimg lazyload" 
-		alt="<?= $page->title()->html().' — © '.$site->title()->html() ?>" 
+		alt="<?= $alt ?>" 
 		width="100%" height="auto">
 
 		<noscript>
-			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $page->title()->html().' — © '.$site->title()->html() ?>" width="100%" height="auto" />
+			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $alt ?>" width="100%" height="auto" />
 		</noscript>
 
 		<?php if($data->captionleft()->isNotEmpty()): ?>

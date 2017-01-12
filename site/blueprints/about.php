@@ -10,12 +10,6 @@ fields:
   title:
     label: Title
     type:  text
-    width: 1/2
-  featuredimage:
-    label: Featured image
-    type: image
-    width: 1/2
-    required: true
   text:
     label: Description
     type: textarea

@@ -32,7 +32,7 @@ $(function() {
                     setTimeout(function() {
                         $header.removeClass('reduction').addClass('reduced');
                         $(this).remove();
-                    }, 1500);
+                    }, 1000);
                 });
                 $('body').on('click', '[data-target]', function(e) {
                     $el = $(this);
@@ -131,7 +131,7 @@ $(function() {
             } else {
                 $body.removeClass('about');
             }
-            $('#container .inner').hasClass('home') ? delay = 1000 : delay = 300;
+            $('#container .inner').hasClass('home') ? delay = 700 : delay = 300;
             setTimeout(function() {
                 $(target).load(url + ' #container .inner', function(response) {
                     setTimeout(function() {

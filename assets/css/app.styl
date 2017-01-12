@@ -166,7 +166,7 @@ header.reduced
 	ul.submenu
 		margin-left .5em
 		li
-			transition(height, 800ms)
+			transition(height, 1000ms)
 			height 0px
 			overflow hidden
 	ul.submenu.open
@@ -213,7 +213,7 @@ header.reduced
 		padding 20rem 0 0
 	.project
 		cf()
-		transition(all, 1s, cubic-bezier(.60,0,.40,1))
+		transition(all, 0.7s, cubic-bezier(.60,0,.40,1))
 		backface()
 		.image-overflow
 			transition(opacity, 400ms, ease)
@@ -273,7 +273,7 @@ header.reduced
 				font-size 2.5rem
 				float left
 		.featured.image
-			transition(transform, 1.8s)
+			transition(transform, 1.3s)
 			transition-delay(0s)
 			position relative
 			z-index 1
@@ -464,7 +464,7 @@ $margin-mobile = 30vw
 	width 66.66666666666666%
 	min-height 100vh
 	max-width 1200px
-	//margin-top 15rem
+	margin-top 15rem
 	+below($md)
 		stack()
 	section
