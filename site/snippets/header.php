@@ -81,19 +81,24 @@
 
 <div class="loader"></div>
 
-<?php $introback = $site->introback() ?>
-<?php $introfront = $site->introfront() ?>
+<?php $intro = $site->intro()->toStructure()->shuffle()->first() ?>
+<?php if ($intro): ?>
+
+<?php $introback = $intro->introback() ?>
+<?php $introfront = $intro->introfront() ?>
 <?php if($introback->isNotEmpty()): ?>
 <div id="intro">
-	<div class="back<? e($site->distort()->bool(), ' distort') ?><? e($site->colorsmotion()->bool(), ' hue-minus') ?>" style="background-image: url('<?= $introback->toFile()->url() ?>');">
+	<div class="back<? e($intro->distort()->bool(), ' distort') ?><? e($intro->colorsmotion()->bool(), ' hue-minus') ?>" style="background-image: url('<?= $introback->toFile()->url() ?>');">
 	</div>
 	<?php if($introfront->isNotEmpty()): ?>
-	<div class="front<?php echo ' '.$site->effect(); ?><? e($site->imagemotion()->bool(), ' move') ?><? e($site->colorsmotion()->bool(), ' hue-plus') ?>" style="background-image: url('<?= $introfront->toFile()->url() ?>');">></div>
+	<div class="front<?php echo ' '.$intro->effect(); ?><? e($intro->imagemotion()->bool(), ' move') ?><? e($intro->colorsmotion()->bool(), ' hue-plus') ?>" style="background-image: url('<?= $introfront->toFile()->url() ?>');">></div>
 	<?php endif ?>
 </div>
 <?php endif ?>
 
-<header<?php e($introback->isEmpty(), ' class="reduced"') ?>>
+<?php endif ?>
+
+<header<?php e($intro == null, ' class="reduced"') ?>>
 	<a href="<?= $site->url() ?>" data-target="index">
 		<span id="site-title">
 			<div>

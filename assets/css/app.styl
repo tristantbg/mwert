@@ -77,11 +77,11 @@ a, a:hover, a:visited, a:focus
 img
 	display block
 
-img.lazyimg
+img.lazyimg, img.lazyimg + .image-caption
 	transition(opacity, 400ms, ease)
 	opacity 0
 
-img.lazyimg.lazyloaded
+img.lazyimg.lazyloaded, img.lazyimg.lazyloaded + .image-caption
 	opacity 1
 
 .diff, .menu-item

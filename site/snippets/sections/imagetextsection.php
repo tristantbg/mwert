@@ -21,6 +21,11 @@
 			$srcset = '';
 			for ($i = 500; $i <= 2500; $i += 500) $srcset .= resizeOnDemand($image, $i) . ' ' . $i . 'w,';
 		?>
+
+		<noscript>
+			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $alt ?>" width="100%" height="auto" />
+		</noscript>
+		
 		<img 
 		src="<?= resizeOnDemand($image, 50) ?>" 
 		data-src="<?= resizeOnDemand($image, 1000) ?>" 
@@ -30,10 +35,6 @@
 		class="lazyimg lazyload" 
 		alt="<?= $alt ?>" 
 		width="100%" height="auto">
-
-		<noscript>
-			<img src="<?= resizeOnDemand($image, 1500) ?>" alt="<?= $alt ?>" width="100%" height="auto" />
-		</noscript>
 
 		<?php if($data->captionleft()->isNotEmpty()): ?>
 		<div class="image-caption">

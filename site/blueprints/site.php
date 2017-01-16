@@ -5,37 +5,42 @@ fields:
   introSettings:
     label: Intro Settings
     type: headline
-  introback:
-    label: Image Back
-    type: image
-    width: 1/2
-  introfront:
-    label: Image Front
-    type: image
-    width: 1/2
-  imagemotion:
-    label: Image motion
-    type: toggle
-    options: yes/no
-    width: 1/2
-  colorsmotion:
-    label: Colors motion
-    type: toggle
-    options: yes/no
-    width: 1/2
-  distort:
-    label: Image stretch
-    type: toggle
-    options: yes/no
-    width: 1/2
-  effect:
-    label: Fusion Effect
-    type: select
-    width: 1/2
-    options:
-      difference : Difference
-      exclusion : Exclusion
-      multiply : Multiply
+  intro:
+    label: Intro
+    type: structure
+    style: table
+    fields:
+      introback:
+        label: Image Back
+        type: image
+        width: 1/2
+      introfront:
+        label: Image Front
+        type: image
+        width: 1/2
+      imagemotion:
+        label: Image motion
+        type: toggle
+        options: yes/no
+        width: 1/2
+      colorsmotion:
+        label: Colors motion
+        type: toggle
+        options: yes/no
+        width: 1/2
+      distort:
+        label: Image stretch
+        type: toggle
+        options: yes/no
+        width: 1/2
+      effect:
+        label: Fusion Effect
+        type: select
+        width: 1/2
+        options:
+          difference : Difference
+          exclusion : Exclusion
+          multiply : Multiply
   generalSettings:
     label: Site Settings
     type: headline
