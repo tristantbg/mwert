@@ -1,7 +1,17 @@
 <?php snippet('header') ?>
 
-<h1><?php echo $page->title()->html() ?></h1>
+<div id="project-content" class="page-content page">
 
-<p><?php echo $page->text()->kirbytext() ?></p>
+<div id="sections">
+	
+	<?= $page->text()->kt() ?>
+
+</div>
+
+<footer>
+	<div id="back" class="menu-item bottom">
+		Back
+	</div>
+</footer>
 
 <?php snippet('footer') ?>

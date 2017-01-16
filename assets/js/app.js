@@ -14,6 +14,7 @@ $(function() {
                 $body = $('body');
                 $container = $('#container');
                 $header = $('header');
+                app.sizeSet();
                 History.Adapter.bind(window, 'statechange', function() {
                     var State = History.getState();
                     console.log(State);
@@ -32,8 +33,12 @@ $(function() {
                     setTimeout(function() {
                         $header.removeClass('reduction').addClass('reduced');
                         $(this).remove();
-                    }, 1000);
+                    }, 1450);
                 });
+                if (isMobile) {
+                    $header.addClass('reduced');
+                    $('#intro').remove();
+                }
                 $('body').on('click', '[data-target]', function(e) {
                     $el = $(this);
                     e.preventDefault();
@@ -73,7 +78,7 @@ $(function() {
                 app.navScroll();
                 window.viewportUnitsBuggyfill.init();
                 $(document).on('lazybeforeunveil', function(e) {
-                        $(e.target).parents('.project').addClass('lazyloaded');
+                    $(e.target).parents('.project').addClass('lazyloaded');
                 });
                 $(window).load(function() {
                     app.sizeSet();
