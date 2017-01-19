@@ -32,8 +32,10 @@ $(function() {
                     $header.addClass('reduction');
                     setTimeout(function() {
                         $header.removeClass('reduction').addClass('reduced');
-                        $(this).remove();
                     }, 1450);
+                    setTimeout(function() {
+                        $('#intro').remove();
+                    }, 2000);
                 });
                 if (isMobile) {
                     $header.addClass('reduced');

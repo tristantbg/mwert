@@ -353,16 +353,19 @@ $margin-mobile = 30vw
 			font-size 2.3rem
 	.year
 		p
-			margin-left 2.5rem
+			margin-left 2.8rem
 			margin-bottom 0
 			+below($md)
 				margin-left 5rem
 		p:first-child
 			margin-left 0
-			font-size 1.2rem
+			font-size 1.3rem
 			letter-spacing 100%
+			border-bottom 1px solid rgba(0,0,0,0.2)
 			+below($md)
-				font-size 2.3rem
+				font-size 2rem
+		p:last-child
+			margin-bottom 1em
 	section
 		span(1)
 		margin-bottom $margin-desktop
@@ -479,22 +482,31 @@ $margin-mobile = 30vw
 			font-size 3rem
 			margin-bottom ($margin-mobile/2)
 	#about-contact
-		col(0.8/4, gutter: 5, cycle: 2)	
+		col(0.8/4, gutter: 5, cycle: 2)
+		text-transform uppercase
+		+above($md + 1)
+			text-align right
 		+below($md)
 			stack()
 			flexbox()
+		p
+			font-size 1.3rem
+			letter-spacing 100%
+			line-height 1.6
+			+below($md)
+				font-size 2rem
 		p:not(:first-child)
 			+below($md)
 				margin-left 3em
 	section.about-section
 		.section-title
-			span(1/2)
+			span(2/6)
 			+below($md)
 				stack()
 				font-size 3rem
 				margin-bottom 1em
 		.section-text
-			span(1/2)
+			span(4/6)
 			+above($md + 1)
 				margin-top .2em
 			+below($md)
