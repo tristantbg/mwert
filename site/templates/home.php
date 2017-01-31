@@ -8,6 +8,7 @@
 	<?php $project = page($entry->project()->value());
 		  $image = $project->image($project->featuredimage());
 		  $hasSecondary = $project->secondaryimage()->isNotEmpty();
+		  $secondary = null;
 		  if ($hasSecondary) {
 		  	$secondary = $project->image($project->secondaryimage());
 		  }

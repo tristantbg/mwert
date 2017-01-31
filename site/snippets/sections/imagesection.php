@@ -1,5 +1,5 @@
 <section class="s-image <?= $data->position() ?>">
-  <div class="content col <?= $data->width() ?>">
+  <div class="content col <?= $data->width() ?><?php e($data->shadow()->bool(), ' shadow') ?>">
   	<?php $image = $data->content()->toFile(); 
   			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
   			if ($data->captionleft()->isNotEmpty()) {

@@ -36,7 +36,7 @@
 		<?php $next = $page->parent()->children()->visible()->first() ?>
 		<?php endif ?>
 		<a href="<?= $next->url() ?>" data-title="<?= $next->title()->html() ?>" data-target="page">
-		Next project
+		Next
 		</a>	
 	</div>
 </footer>

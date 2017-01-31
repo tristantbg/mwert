@@ -344,6 +344,13 @@ $margin-mobile = 30vw
 	+below($md)
 		stack()
 		margin-top 20rem
+	img.lazyimg, img.lazyimg + .image-caption
+		transition(all, 900ms, ease)
+		opacity 0
+		transform(translateY(150px) translateZ(0))
+	img.lazyimg.lazyloaded, img.lazyimg.lazyloaded + .image-caption
+		opacity 1
+		transform(translateY(0) translateZ(0))
 	h1,h2
 		margin-bottom 1em
 	em
@@ -360,6 +367,7 @@ $margin-mobile = 30vw
 				margin-left 5rem
 		p:first-child
 			margin-left 0
+			margin-bottom .1em
 			font-size 1.3rem
 			letter-spacing 100%
 			border-bottom 1px solid rgba(0,0,0,0.2)
@@ -386,6 +394,9 @@ $margin-mobile = 30vw
 				padding 0 $padding
 			+below($md)
 				width 100%
+		.shadow
+			img
+				box-shadow(0 3px 9px rgba(0,0,0,0.3))
 		.content.image
 			+above($md + 1)
 				padding 0 $padding
@@ -451,6 +462,8 @@ $margin-mobile = 30vw
 				stack()
 				padding 0
 	section#project-description
+		+above($md + 1)
+			padding 0 $padding
 		.project-title
 			col(3/10)
 			+below($md)
@@ -480,7 +493,6 @@ $margin-mobile = 30vw
 		font-size 2rem
 		+below($md)
 			stack()
-			font-size 3rem
 			margin-bottom ($margin-mobile/2)
 	#about-contact
 		col(0.8/4, gutter: 5, cycle: 2)

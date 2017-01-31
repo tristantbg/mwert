@@ -66,11 +66,11 @@ fields:
             label: Image
             type: image
             required: true
-            width: 1/3
+            width: 1/2
           width:
             label: Width
             type: select
-            width: 1/3
+            width: 1/2
             required: true
             options:
               col-1-4 : 1/4
@@ -81,13 +81,19 @@ fields:
           position:
             label: Position
             type: select
-            width: 1/3
+            width: 1/2
             required: true
             options:
               left : Left
               center : Center
               right : Right
             default: center
+          shadow:
+            label: Shadow
+            type: toggle
+            options: yes/no
+            default: no
+            width: 1/2
           captionleft:
             label: Caption Left
             type: text
@@ -137,6 +143,11 @@ fields:
               left : Left
               right : Right
             default: left
+          shadow:
+            label: Shadow
+            type: toggle
+            options: yes/no
+            default: no
           captionleft:
             label: Caption Left
             type: text
@@ -175,6 +186,13 @@ fields:
             label: Image 1
             type: image
             required: true
+            width: 1/2
+          shadow1:
+            label: Shadow 1
+            type: toggle
+            options: yes/no
+            default: no
+            width: 1/2
           captionleft1:
             label: Caption Left
             type: text
@@ -188,6 +206,11 @@ fields:
             label: Image 2
             type: image
             required: true
+          shadow2:
+            label: Shadow 2
+            type: toggle
+            options: yes/no
+            default: no
           captionleft2:
             label: Caption Left
             type: text

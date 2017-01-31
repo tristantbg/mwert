@@ -6,7 +6,7 @@
 	</div>
   <?php endif ?>
 
-  <div class="content image">
+  <div class="content image<?php e($data->shadow()->bool(), ' shadow') ?>">
   	<?php $image = $data->content()->toFile(); 
   			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
   			if ($data->captionleft()->isNotEmpty()) {

@@ -1,6 +1,6 @@
 <section class="s-twoimages">
 
-  <div class="content image">
+  <div class="content image<?php e($data->shadow1()->bool(), ' shadow') ?>">
   	<?php $image = $data->content1()->toFile(); 
   			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
   			if ($data->captionleft1()->isNotEmpty()) {
@@ -41,7 +41,7 @@
 
   </div>
 
-  <div class="content image">
+  <div class="content image<?php e($data->shadow2()->bool(), ' shadow') ?>">
   	<?php $image = $data->content2()->toFile(); 
   			$alt = $page->title()->html().' — © '.$page->date('Y').', '.$site->title()->html();
   			if ($data->captionleft2()->isNotEmpty()) {
