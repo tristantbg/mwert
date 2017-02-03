@@ -77,10 +77,17 @@ $(function() {
                         target.addClass('open');
                     }
                 });
+                $body.on('click', '#read-more', function(event) {
+                    event.preventDefault();
+                    $(this).parent().addClass('more');
+                });
                 app.navScroll();
                 window.viewportUnitsBuggyfill.init();
-                $(document).on('lazybeforeunveil', function(e) {
+                document.addEventListener('lazybeforeunveil', function(e) {
                     $(e.target).parents('.project').addClass('lazyloaded');
+                });
+                document.addEventListener('lazybeforesizes', function(e) {
+                    e.detail.width = Math.max(e.target.parentNode.offsetWidth, e.detail.width);
                 });
                 $(window).load(function() {
                     app.sizeSet();
@@ -107,6 +114,9 @@ $(function() {
                     } else {
                         $(this).css('marginTop', -elemH / 3);
                     }
+                    elem.find('.secondary.image:not(".fit-height")').each(function(index, el) {
+                      $(this).width($(this).parent().width());
+                    });
                 });
             }
         },

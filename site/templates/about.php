@@ -4,21 +4,23 @@
 
 <div id="sections">
 	
-	<section id="about-intro">
-
-		<div id="about-text">
-			<?= $page->text()->kt() ?>
+	<section id="about-contact" class="about-section">
+		<div class="section-title">
+			Contact
 		</div>
-
-		<div id="about-contact">
-			<?= $page->contact()->kt() ?>
-		</div>
-
+		<?= $page->contact()->kt() ?>
 	</section>
-
-	<?php foreach($page->sections()->toStructure() as $section): ?>
-	  <?php snippet('sections/' . $section->_fieldset(), array('data' => $section)) ?>
-	<?php endforeach ?>
+	
+	<section id="about-content">
+		<?php foreach($page->sections()->toStructure() as $section): ?>
+		  <?php snippet('sections/' . $section->_fieldset(), array('data' => $section)) ?>
+		<?php endforeach ?>
+		
+		<section id="credits">
+		<div>© <?= date('Y') ?> — All rights reserved</div>
+		<div>Design & development by <a href="http://www.tristanbagot.com" target="_blank">Tristan Bagot</a></div>
+		</section>
+	</section>
 
 </div>
 

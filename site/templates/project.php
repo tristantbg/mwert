@@ -17,7 +17,11 @@
 			<?php endif ?>
 		</div>
 		<div class="project-text">
-			<?= $page->text()->kt() ?>
+			<?php $text = $page->text()->kt() ?>
+			<?= $text ?>
+			<?php if(substr_count($text,'<p>') > 3): ?>
+			<div id="read-more">Read more</div>
+			<?php endif ?>
 		</div>
 	</section>
 	<?php endif ?>

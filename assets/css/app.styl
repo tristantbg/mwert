@@ -74,7 +74,7 @@ a, a:hover, a:visited, a:focus
 	+below($md)
 		font-size 3rem
 
-img
+img, a
 	display block
 
 img.lazyimg, img.lazyimg + .image-caption
@@ -181,7 +181,7 @@ header.reduced
 // 		top $padding
 
 #projects-menu
-	bottom ($padding*2.5)
+	top ($padding*2)
 	left $padding
 	backface()
 	+below($md)
@@ -200,7 +200,7 @@ header.reduced
 #container
 	display inline-block
 	width 100%
-	margin $padding 0
+	margin $padding 0 ($padding*2)
 	padding 0 $padding
 	
 /// PROJECTS
@@ -217,6 +217,7 @@ header.reduced
 		transition(all, 0.7s, cubic-bezier(.60,0,.40,1))
 		backface()
 		.image-overflow
+			span(1)
 			transition(opacity, 400ms, ease)
 			overflow hidden
 			opacity 0
@@ -276,6 +277,7 @@ header.reduced
 		.featured.image
 			transition(transform, 1.3s)
 			transition-delay(0s)
+			backface()
 			position relative
 			z-index 1
 		.secondary.image
@@ -296,7 +298,7 @@ header.reduced
 			img.lazyimg
 				display inline-block
 				width auto
-				height 100%
+				height calc(100% - 1px)
 		.featured.image.lazyloaded + .secondary.image
 			opacity 1
 			img.lazyimg.lazyloaded
@@ -323,7 +325,7 @@ header.reduced
 		opacity 1
 
 .menu-item.bottom
-	bottom ($padding*2.5)
+	bottom ($padding*2)
 	right $padding
 	+below($md)
 		bottom $padding
@@ -334,7 +336,7 @@ $margin-desktop = 10vw
 $margin-mobile = 30vw
 
 .page-content
-	width 66.66666666666666%
+	width 62%
 	//margin-top 15rem
 	min-height 100vh
 	max-width 1200px
@@ -347,10 +349,12 @@ $margin-mobile = 30vw
 	img.lazyimg, img.lazyimg + .image-caption
 		transition(all, 900ms, ease)
 		opacity 0
-		transform(translateY(150px) translateZ(0))
+		+above($md + 1)
+			transform(translateY(150px) translateZ(0))
 	img.lazyimg.lazyloaded, img.lazyimg.lazyloaded + .image-caption
 		opacity 1
-		transform(translateY(0) translateZ(0))
+		+above($md + 1)
+			transform(translateY(0) translateZ(0))
 	h1,h2
 		margin-bottom 1em
 	em
@@ -369,8 +373,8 @@ $margin-mobile = 30vw
 			margin-left 0
 			margin-bottom .1em
 			font-size 1.3rem
-			letter-spacing 100%
-			border-bottom 1px solid rgba(0,0,0,0.2)
+			letter-spacing .01em
+			//border-bottom 1px solid rgba(0,0,0,0.2)
 			+below($md)
 				font-size 2rem
 		p:last-child
@@ -414,6 +418,8 @@ $margin-mobile = 30vw
 		margin-bottom 7vw
 		+below($md)
 			margin-bottom $margin-mobile
+	section:last-of-type
+		margin-bottom 0
 	section.s-image
 		text-align center
 	section.s-image.left
@@ -476,9 +482,35 @@ $margin-mobile = 30vw
 			col(7/10, cycle:2)
 			+below($md)
 				stack()
+			p:nth-child(n+4)
+				display none
+			#read-more
+				position relative
+				color rgba(0,0,0,.87)
+				//border-top 1px solid rgba(0,0,0,0.2)
+				//padding-top .5em
+				//text-align right
+				cursor pointer
+			#read-more::before
+				transition(all, 1s, ease)
+				content ''
+				position absolute
+				top -7.1em
+				left 0
+				width 100%
+				height 7em
+				background linear-gradient( 0deg, $primary 10%, rgba(255,255,255,0) );
+			#read-more:hover::before
+				top -5.1em
+				height 5em
+		.project-text.more
+			p:nth-child(n+4)
+				display block
+			#read-more
+				display none
 
 .page-content.about
-	width 66.66666666666666%
+	width 62%
 	min-height 100vh
 	max-width 1200px
 	margin-top 15rem
@@ -488,29 +520,33 @@ $margin-mobile = 30vw
 		margin-bottom ($margin-desktop/2)
 		+below($md)
 			margin-bottom ($margin-mobile/2)
+	section:last-of-type
+		margin-bottom 0
 	#about-text
 		col(3.2/4)
 		font-size 2rem
 		+below($md)
 			stack()
+			font-size 2.3rem
 			margin-bottom ($margin-mobile/2)
-	#about-contact
-		col(0.8/4, gutter: 5, cycle: 2)
-		text-transform uppercase
-		+above($md + 1)
-			text-align right
+	section#about-contact
+		col(1/5, gutter: 5, cycle: 2)
+		shift(4/5, col)
+		.section-title
+			display none
+		a
+			display inline-block
 		+below($md)
 			stack()
-			flexbox()
-		p
-			font-size 1.3rem
-			letter-spacing 100%
-			line-height 1.4
-			+below($md)
-				font-size 2rem
-		p:not(:first-child)
-			+below($md)
-				margin-left 3em
+			unshift()
+			.section-title
+				display block
+	section#about-content
+		col(4/5, gutter: 5, cycle: 2)
+		shift(-1/5, col)
+		+below($md)
+			stack()
+			unshift()
 	section.about-section
 		.section-title
 			span(2/6)
@@ -522,6 +558,22 @@ $margin-mobile = 30vw
 			span(4/6)
 			+above($md + 1)
 				margin-top .2em
+			+below($md)
+				stack()
+	#credits
+		font-size 1.3rem
+		letter-spacing .01em
+		line-height 110%
+		//border-top 1px solid rgba(0,0,0,0.2)
+		padding-top .5em
+		+below($md)
+			font-size 2rem
+		div:nth-child(1)
+			span(2/6)
+			+below($md)
+				stack()
+		div:nth-child(2)
+			span(4/6)
 			+below($md)
 				stack()
 
@@ -551,7 +603,7 @@ footer.next-project
 
 body.about
 	#about-menu
-		height 0
+		//height 0
 
 body.leaving
 	#projects-container
