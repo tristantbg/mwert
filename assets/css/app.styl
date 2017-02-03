@@ -331,6 +331,10 @@ header.reduced
 	+below($md)
 		bottom $padding
 
+.menu-item.bottom#prev-project
+	right initial
+	left $padding
+
 /// SECTIONS
 
 $margin-desktop = 10vw
@@ -587,11 +591,11 @@ $margin-mobile = 30vw
 footer
 	#page-title
 		cursor default
-	#page-title, #next-project
+	#page-title, #next-project, #prev-project
 		transition(all, 500ms)
 		height 1.1em
 		overflow hidden
-	#next-project
+	#next-project, #prev-project
 		height 0
 	#back
 		cursor pointer
@@ -599,7 +603,7 @@ footer
 footer.next-project
 	#page-title
 		height 0
-	#next-project
+	#prev-project, #next-project
 		height 1.1em
 
 body.about
@@ -619,7 +623,7 @@ body.leaving
 		#sections, .section
 			opacity 0
 		footer
-			#page-title, #next-project
+			#page-title, #next-project, #prev-project
 				height 0
 
 
