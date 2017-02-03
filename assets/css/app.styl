@@ -74,7 +74,7 @@ a, a:hover, a:visited, a:focus
 	+below($md)
 		font-size 3rem
 
-img, a
+img
 	display block
 
 img.lazyimg, img.lazyimg + .image-caption
@@ -183,6 +183,7 @@ header.reduced
 #projects-menu
 	top ($padding*2)
 	left $padding
+	width 33%
 	backface()
 	+below($md)
 		top ($padding*2)
@@ -212,7 +213,7 @@ header.reduced
 	span(1)
 	overflow hidden
 	+below($md)
-		padding 20rem 0 0
+		padding 10rem 0 0 !important
 	.project
 		cf()
 		transition(all, 0.7s, cubic-bezier(.60,0,.40,1))
@@ -314,6 +315,9 @@ header.reduced
 			+above($md + 1)
 				transform(translate3d(200%,0,0) scaleX(2.5))
 				transition-delay(400ms)
+	.project:last-child
+		+below($md)
+			margin-bottom 0
 		
 /// PAGE
 
@@ -338,7 +342,7 @@ header.reduced
 /// SECTIONS
 
 $margin-desktop = 10vw
-$margin-mobile = 30vw
+$margin-mobile = 13vw
 
 .page-content
 	width 62%
@@ -350,7 +354,7 @@ $margin-mobile = 30vw
 	float none
 	+below($md)
 		stack()
-		margin-top 20rem
+		margin-top 10rem
 	img.lazyimg, img.lazyimg + .image-caption
 		transition(all, 900ms, ease)
 		opacity 0
