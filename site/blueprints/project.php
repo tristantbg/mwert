@@ -75,6 +75,7 @@ fields:
             options:
               col-1-4 : 1/4
               col-2-4 : 2/4
+              col-5-8 : 5/8
               col-3-4 : 3/4
               col-4-4 : 4/4
             default: col-2-4
