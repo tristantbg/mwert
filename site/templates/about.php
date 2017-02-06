@@ -25,7 +25,7 @@
 </div>
 
 <footer>
-	<div id="back" class="menu-item bottom">
+	<div id="back" class="menu-item top">
 		Back
 	</div>
 </footer>

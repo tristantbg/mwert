@@ -43,7 +43,7 @@
 					data-src="<?= resizeOnDemand($image, 1000) ?>" 
 					data-srcset="<?= $srcset ?>" 
 					data-sizes="auto" 
-					data-optimumx="1.5" 
+					data-optimumx="1.3" 
 					class="featured image lazyimg lazyload" 
 					alt="<?= $project->title()->html().' — © '.$site->title()->html() ?>" 
 					width="100%" height="auto">
@@ -59,7 +59,7 @@
 						data-src="<?= resizeOnDemand($secondary, 1000) ?>" 
 						data-srcset="<?= $srcset ?>" 
 						data-sizes="auto" 
-						data-optimumx="1.5" 
+						data-optimumx="1.3" 
 						class="lazyimg lazyload" 
 						alt="<?= $project->title()->html().' — © '.$site->title()->html() ?>" 
 						width="100%" height="auto">

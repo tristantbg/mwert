@@ -1,9 +1,9 @@
 @keyframes move {
   from {
-    transform(translate3d(0%, 0%, 0))
+    transform(scaleX(1))
   }
   to {
-    transform(translate3d(-50%, 0%, 0))
+    transform(scaleX(2))
   }
 }
 
@@ -42,6 +42,15 @@
   to {
     width 0
     left 50%
+  }
+}
+
+@keyframes hide-container-safari {
+  from {
+    transform(scaleX(1))
+  }
+  to {
+    transform(scaleX(0))
   }
 }
 
@@ -115,7 +124,7 @@
 	background-position 0%
 
 #intro.hidden
-		animation-name(hide-container)
+		animation-name(hide-container-safari)
 		animation-duration(1.8s)
 		animation-timing-function(cubic-bezier(.60,0,.40,1))
 		animation-fill-mode(forwards)
@@ -124,4 +133,3 @@
 			animation-duration(1.8s)
 			animation-timing-function(cubic-bezier(.60,0,.40,1))
 			animation-fill-mode(forwards)
-	

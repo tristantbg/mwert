@@ -29,16 +29,6 @@
 </div>
 
 <footer>
-	<div id="prev-project" class="menu-item bottom">
-		<?php if($page->hasPrevVisible()): ?>
-		<?php $prev = $page->prevVisible() ?>
-		<?php else: ?>
-		<?php $prev = $page->parent()->children()->visible()->last() ?>
-		<?php endif ?>
-		<a href="<?= $prev->url() ?>" data-title="<?= $prev->title()->html() ?>" data-target="page">
-		Previous
-		</a>	
-	</div>
 
 	<div id="page-title" class="menu-item bottom">
 		<?= $page->title()->html() ?>
