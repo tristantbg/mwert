@@ -157,9 +157,10 @@ $(function() {
                                 var id = $('#container .inner.home').data('id');
                                 var scrollTop = localStorage.getItem('scrollTop-' + id) || 0;
                                 console.log('GET: ' + 'scrollTop-' + id + "= " + scrollTop);
-                                $body.scrollTop(scrollTop);
+                                $('html, body').scrollTop(scrollTop);
                             } else {
-                                $body.scrollTop(0);
+                                $('html, body').scrollTop(0);
+                                $('html, body').scrollTop(0);
                             }
                         }
                         $body.removeClass('leaving');

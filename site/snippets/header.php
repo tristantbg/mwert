@@ -143,7 +143,7 @@ $aboutPage = $pages->find('about');
 </div>
 <?php endif ?>
 
-<div id="about-menu" class="menu-item">
+<div id="about-menu" class="menu-item top">
 	<a href="<?= $aboutPage->url() ?>" data-title="<?= $aboutPage->title()->html() ?>" data-target="about">
 	<?= $aboutPage->title()->html() ?>
 	</a>

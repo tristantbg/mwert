@@ -192,8 +192,6 @@ header.reduced
 		position initial
 
 #about-menu
-	top $padding
-	right $padding
 	transition(height, 500ms)
 	height 1.1em
 	overflow hidden
@@ -201,14 +199,13 @@ header.reduced
 #container
 	display inline-block
 	width 100%
-	margin $padding 0 ($padding*2)
+	margin $padding 0 $padding
 	padding 0 $padding
 	
 /// PROJECTS
 
 #projects-container
 	hideselect()
-	padding-bottom 10vh
 	span(1)
 	overflow hidden
 	+below($md)
@@ -219,8 +216,9 @@ header.reduced
 		backface()
 		.image-overflow
 			span(1)
-			transition(opacity, 400ms, ease)
 			overflow hidden
+		.image-overflow, .project-title
+			transition(opacity, 400ms, ease)
 			opacity 0
 	.project:nth-child(n+2)
 		margin-top -15vw
@@ -251,7 +249,7 @@ header.reduced
 			top 0
 			left ($padding/2)
 	.project.lazyloaded
-		.image-overflow
+		.image-overflow, .project-title
 			opacity 1
 	.project
 		width 50%
@@ -338,7 +336,7 @@ header.reduced
 	top $padding
 	right $padding
 	+below($md)
-		top $padding
+		top ($padding*2)
 
 .menu-item.bottom.left
 	right initial
@@ -411,28 +409,22 @@ $margin-mobile = 13vw
 			width 100%
 		.col
 			display inline-block
-			+above($md + 1)
-				//padding 0 $padding
 			+below($md)
 				width 100%
 		.shadow
 			position relative
 			img
-				position relative
 				z-index 2
 		.shadow::after
 			content ''
 			position absolute
 			left 0
 			z-index 1
-			bottom -17px
-			height 20px
+			bottom -13px
+			height 15px
 			vendor(filter, blur(2px))
 			width 100%
-			background linear-gradient( 0deg, rgba(255,255,255,0), rgba(0,0,0,0.3))
-		.content.image
-			+above($md + 1)
-				//padding 0 $padding
+			background linear-gradient(0deg, rgba(255,255,255,0), rgba(0,0,0,0.3))
 		.image-caption
 			width 100%
 			margin-top $padding
