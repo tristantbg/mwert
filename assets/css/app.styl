@@ -36,6 +36,8 @@ html
 body
 	text-rendering optimizeLegibility
 	font-smoothing()
+	-webkit-font-variant-ligatures no-common-ligatures
+	font-variant-ligatures no-common-ligatures
 	font-family 'NHUL', 'Helvetica', 'Arial', sans-serif
 	font-size 1.7rem
 	+below($md)
@@ -248,6 +250,10 @@ header.reduced
 		.secondary.image
 			top 0
 			left ($padding/2)
+	.project:last-child
+		.project-title
+			top "calc(-1.7rem - %s)" % $padding
+			bottom initial
 	.project.lazyloaded
 		.image-overflow, .project-title
 			opacity 1
@@ -414,6 +420,7 @@ $margin-mobile = 13vw
 		.shadow
 			position relative
 			img
+				position relative
 				z-index 2
 		.shadow::after
 			content ''

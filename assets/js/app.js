@@ -3,7 +3,7 @@ var width = $(window).width(),
     height = $(window).height(),
     isMobile = false,
     delay,
-    $root = '/new';
+    $root = '/';
 $(function() {
     var app = {
         init: function() {
