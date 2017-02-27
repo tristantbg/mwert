@@ -51,11 +51,11 @@
 	<?php endif ?>
 
 	<meta itemprop="description" content="<?= $site->description()->html() ?>">
-	<!-- <link rel="shortcut icon" href="<?php //url('assets/images/favicon.ico') ?>">
-	<link rel="icon" href="<?php //url('assets/images/favicon.ico') ?>" type="image/x-icon"> -->
+	<link rel="shortcut icon" href="">
+	<link rel="icon" href="" type="image/x-icon">
 
 	<?php 
-	echo css('assets/css/build/build.min.css?=v2.0');
+	echo css('assets/css/build/build.min.css?=v3.0');
 	echo js('assets/js/vendor/modernizr.min.js');
 	?>
 	
@@ -78,6 +78,13 @@
 
 </head>
 <body<?php e($page->content()->name() == 'about', ' class="about"') ?>>
+
+<div id="outdated">
+	<div class="inner">
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+	<br>Please <a href="http://outdatedbrowser.com" target="_blank">upgrade your browser</a> to improve your experience.</p>
+	</div>
+</div>
 
 <div class="loader"></div>
 

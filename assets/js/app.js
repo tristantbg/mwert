@@ -160,7 +160,6 @@ $(function() {
                                 $('html, body').scrollTop(scrollTop);
                             } else {
                                 $('html, body').scrollTop(0);
-                                $('html, body').scrollTop(0);
                             }
                         }
                         $body.removeClass('leaving');
